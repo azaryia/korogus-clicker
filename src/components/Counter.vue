@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="count">{{ totalKorogus }}</span>
-    <img alt="tree-mojo" src="../assets/tree-mojo.png" width="550" @click="increment">
+    <img alt="tree-mojo" src="../assets/images/tree-mojo.png" width="550" @click="increment">
   </div>
 </template>
 

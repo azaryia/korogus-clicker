@@ -25,7 +25,7 @@
       buyProduct: function () {
         let vm = this;
         this.msg = null;
-        if (this.product.price < this.$store.state.korogus) {
+        if (this.product.price <= this.$store.state.korogus) {
           this.$store.commit('BuyProduct', {productId: this.product.id});
           this.msg = 'Yes, You can buy product' + this.product.name;
           setTimeout(function () {
