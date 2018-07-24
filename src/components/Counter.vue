@@ -1,20 +1,25 @@
 <template>
   <div>
     <span class="count">{{ count }}</span>
-    <button @click="increment">Increment</button>
+    <Pictures alt="tree-mojo" src="tree-mojo" width="150" @click="increment">Increment</Pictures>
   </div>
 </template>
 
 <script>
+  import Pictures from "@/components/Pictures.vue";
   export default {
+    components: {
+      Pictures
+    },
     name: "counter",
-    data() {
+    data: function() {
+      console.log(this);
       return {
         count: 0
       };
     },
     methods: {
-      increment() {
+      increment: function() {
         this.count++;
       }
     }
