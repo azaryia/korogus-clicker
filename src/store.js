@@ -5,12 +5,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cookies: 0
+    korogus: 0
   },
   mutations: {
-    popCookie (state) {
-      state.cookies++
-
+    'CickKorogu': function (state) {
+      state.korogus++;
     }
   },
   actions: {}
