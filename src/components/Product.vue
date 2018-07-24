@@ -1,23 +1,35 @@
 <template>
   <div>
-    <h1>{{name}}</h1>
+    <h1>{{product.name}}</h1>
     <slot></slot>
-    <p>{{price}}</p>
-    <p>{{description}}</p>
+    <p>{{product.price}}</p>
+    <p v-if="product && product.description">{{product.description}}</p>
+    <button type="submit" @click="buyProduct">Buy {{product.name}}</button>
+    <p v-show="msg">{{msg}}</p>
   </div>
 </template>
 
 <script>
   export default {
+    name: 'Product',
     props: {
-      name: String,
-      price: Number,
-      description: String
-    }
-    computed: {
-      products: function () {
-        return this.$store.state.korogus
-      },
+      action: Object,
+      product: Object
+    },
+    data: function () {
+      return {
+        msg: null
+      }
+    },
+    methods: {
+      buyProduct: function () {
+        this.msg = null;
+        if (this.product.price < this.$store.state.korogus) {
+          this.$store.commit('BuyProduct', { productId: this.product.id});
+          return (this.msg = 'Yes, You can buy product' + this.product.name);
+        }
+        return (this.msg = 'Sorry, You cant buy product' + this.product.name);
+      }
     }
   };
 </script>

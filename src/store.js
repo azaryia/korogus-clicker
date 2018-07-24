@@ -11,10 +11,10 @@ export default new Vuex.Store({
     products: products
   },
   mutations: {
-    'CickKorogu': function (state) {
+    CickKorogu: function (state) {
       state.korogus++;
     },
-    'BuyProduct': function (state, { productId }) {
+    BuyProduct: function (state, { productId }) {
       state.products = state.products.map(product => {
         if (product.id === productId) {
           product.purchased++;
@@ -24,6 +24,9 @@ export default new Vuex.Store({
 
         return product;
       })
+    },
+    PopKorogu: function (state, { cookies }) {
+      state.cookies += cookies
     }
   },
   actions: {}

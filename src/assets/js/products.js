@@ -8,7 +8,7 @@ const producers = [
     price: 30,
     cookiesSeconds: 1,
     purchased: 0,
-    images: '../assets/zelda.png'
+    image: '../assets/zelda.png'
   },
   {
     id: uuid(),
@@ -16,7 +16,7 @@ const producers = [
     price: 100,
     cookiesSeconds: 5,
     purchased: 0,
-    images: '../assets/link.png'
+    image: '../assets/link.png'
   }
 ];
 
