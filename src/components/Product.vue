@@ -5,7 +5,7 @@
     <p>{{product.price}}</p>
     <p v-if="product && product.description">{{product.description}}</p>
     <button type="submit" @click="buyProduct">Buy {{product.name}}</button>
-    <p v-show="msg">{{msg}}</p>
+    <p ref="product" :class="{'show' : msg}">{{msg}}</p>
   </div>
 </template>
 
@@ -23,17 +23,31 @@
     },
     methods: {
       buyProduct: function () {
+        let vm = this;
         this.msg = null;
         if (this.product.price < this.$store.state.korogus) {
-          this.$store.commit('BuyProduct', { productId: this.product.id});
-          return (this.msg = 'Yes, You can buy product' + this.product.name);
+          this.$store.commit('BuyProduct', {productId: this.product.id});
+          this.msg = 'Yes, You can buy product' + this.product.name;
+          setTimeout(function () {
+            this.classList.remove('show');
+          }, 3000);
+
         }
-        return (this.msg = 'Sorry, You cant buy product' + this.product.name);
+        else {
+          this.msg = 'Sorry, You cant buy product' + this.product.name;
+          setTimeout(function () {
+            console.log(this);
+            console.log(vm);
+            vm.$refs.product.classList.remove('show');
+          }, 3000);
+        }
       }
     }
   };
 </script>
 
-<style>
-
+<style scoped lang="scss">
+  .show {
+    display: block;
+  }
 </style>
