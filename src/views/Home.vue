@@ -3,6 +3,7 @@
     <img src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <Counter></Counter>
+    <BuyProducts></BuyProducts>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 // @ is an alias to /src
 import Counter from "@/components/Counter.vue";
 import HelloWorld from "@/components/HelloWorld.vue";
+import BuyProducts from "@/components/BuyProducts.vue";
 
 export default {
   name: "home",
   components: {
     Counter,
-    HelloWorld
+    HelloWorld,
+    BuyProducts
   }
 };
 </script>
