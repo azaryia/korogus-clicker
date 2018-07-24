@@ -2,7 +2,7 @@
   <div>
     <h1>{{product.name}}</h1>
     <slot></slot>
-    <p>{{product.price}}</p>
+    <p>{{Math.round(100 * product.price) /100}}</p>
     <p v-if="product && product.description">{{product.description}}</p>
     <button type="submit" @click="buyProduct">Buy {{product.name}}</button>
     <p ref="product" :class="{'show' : msg}">{{msg}}</p>

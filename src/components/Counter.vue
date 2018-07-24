@@ -10,7 +10,7 @@
     name: "counter",
     computed: {
       totalKorogus: function () {
-        return this.$store.state.korogus;
+        return Math.round(1 * this.$store.state.korogus);
       },
     },
     methods: {
