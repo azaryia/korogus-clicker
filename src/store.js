@@ -52,9 +52,9 @@ export default new Vuex.Store({
           product.purchased++;
           state.korogus -= parseFloat(product.price);
           product.price = 1.22 * parseFloat(product.price);
-          state.korogusSeconds = parseFloat(
-            state.korogusSeconds + product.korogusSeconds
-          );
+          state.korogusSeconds =
+            parseFloat(state.korogusSeconds) +
+            parseFloat(product.korogusSeconds);
           state.korogusClick = 1.22 * parseFloat(state.korogusClick);
           window.localStorage.setItem("korogus", state.korogus);
           window.localStorage.setItem("price" + product.name, product.price);
