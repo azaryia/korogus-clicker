@@ -36,20 +36,22 @@ export default new Vuex.Store({
       state.products = state.products.map(product => {
         if (product.id === productId) {
           product.purchased++;
-          state.korogus -= product.price;
-          product.price = 1.22 * product.price;
-          state.korogusSeconds = product.korogusSeconds + state.korogusSeconds;
+          state.korogus -= parseFloat(product.price);
+          product.price = 1.22 * parseFloat(product.price);
+          state.korogusSeconds = parseFloat(state.korogusSeconds) + parseFloat(product.korogusSeconds);
 
           window.localStorage.setItem('korogus', state.korogus);
           window.localStorage.setItem('price' + product.name, product.price);
           window.localStorage.setItem('purchased_' + product.name, product.purchased);
+          window.localStorage.setItem('korogusSeconds', state.korogusSeconds);
         }
 
         return product;
       })
     },
-    PopKorogu: function (state, { cookies }) {
-      state.cookies += cookies
+    PopKorogu: function (state) {
+      state.korogus = parseFloat(state.korogus) + parseFloat(state.korogusSeconds);
+      window.localStorage.setItem('korogus', state.korogus);
     }
   },
   actions: {}
