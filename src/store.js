@@ -10,6 +10,9 @@ Vue.use(Vuex);
 // Init Local storage or get Korogus
 let korogusStorage = window.localStorage.getItem('korogus') || window.localStorage.setItem('korogus', 0);
 
+// Init Local storage or get Korogus
+let korogusSecondsStorage = window.localStorage.getItem('korogusSeconds') || window.localStorage.setItem('korogusSeconds', 0);
+
 // Init Local storage or get product: purchassed and price
 _.each(products, function (product) {
   product.purchased = window.localStorage.getItem('purchased_' + product.name) || window.localStorage.setItem('purchased_' + product.name, product.purchased);
@@ -20,7 +23,8 @@ _.each(products, function (product) {
 export default new Vuex.Store({
   state: {
     korogus: korogusStorage,
-    products: products
+    products: products,
+    korogusSeconds: korogusSecondsStorage
   },
   mutations: {
     CickKorogu: function (state) {
@@ -34,6 +38,7 @@ export default new Vuex.Store({
           product.purchased++;
           state.korogus -= product.price;
           product.price = 1.22 * product.price;
+          state.korogusSeconds = product.korogusSeconds + state.korogusSeconds;
 
           window.localStorage.setItem('korogus', state.korogus);
           window.localStorage.setItem('price' + product.name, product.price);

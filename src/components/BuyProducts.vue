@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="buy-product">
     <Product :product="product" v-for="product in products" :key="product.id">
       <img v-bind:src="product.image">
     </Product>
@@ -21,6 +21,13 @@
   };
 </script>
 
-<style>
-
+<style lang="scss">
+  .buy-product {
+    overflow-y: auto;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 </style>

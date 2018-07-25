@@ -1,11 +1,11 @@
 import uuid from "uuid/v4";
 
-const producers = [
+const evolutions = [
   {
     id: uuid(),
-    name: "Zelda",
+    name: "Crotte Korogu",
     price: 30,
-    korogusSeconds: 1,
+    cookiesSeconds: 1,
     purchased: 0,
     image: "../assets/images/products/zelda.png"
   },
@@ -13,7 +13,7 @@ const producers = [
     id: uuid(),
     name: "Link",
     price: 100,
-    korogusSeconds: 5,
+    cookiesSeconds: 5,
     purchased: 0,
     image: "../assets/images/products/link.png"
   },
@@ -21,7 +21,7 @@ const producers = [
     id: uuid(),
     name: "ruto",
     price: 500,
-    korogusSeconds: 20,
+    cookiesSeconds: 20,
     purchased: 0,
     image: "../assets/images/products/ruto.png"
   },
@@ -29,7 +29,7 @@ const producers = [
     id: uuid(),
     name: "Machaon",
     price: 1500,
-    korogusSeconds: 100,
+    cookiesSeconds: 100,
     purchased: 0,
     image: "../assets/images/products/machaon.png"
   },
@@ -37,10 +37,10 @@ const producers = [
     id: uuid(),
     name: "Skull-Kid",
     price: 3000,
-    korogusSeconds: 250,
+    cookiesSeconds: 250,
     purchased: 0,
     image: "../assets/images/products/skull-kid.png"
   }
 ];
 
-export default producers;
+export default evolutions;
