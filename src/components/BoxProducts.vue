@@ -25,7 +25,7 @@
 <style lang="scss">
   .box-product {
     overflow-y: auto;
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: start;
