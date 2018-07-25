@@ -7,7 +7,7 @@ const producers = [
     price: 30,
     korogusSeconds: 1,
     purchased: 0,
-    image: "../assets/images/products/zelda.png"
+    image: require("@/assets/images/products/zelda.png")
   },
   {
     id: uuid(),
@@ -15,7 +15,7 @@ const producers = [
     price: 100,
     korogusSeconds: 5,
     purchased: 0,
-    image: "../assets/images/products/link.png"
+    image: require("@/assets/images/products/link.png")
   },
   {
     id: uuid(),
@@ -23,7 +23,7 @@ const producers = [
     price: 500,
     korogusSeconds: 20,
     purchased: 0,
-    image: "../assets/images/products/ruto.png"
+    image: require("@/assets/images/products/ruto.png")
   },
   {
     id: uuid(),
@@ -31,7 +31,7 @@ const producers = [
     price: 1500,
     korogusSeconds: 100,
     purchased: 0,
-    image: "../assets/images/products/machaon.png"
+    image: require("@/assets/images/products/machaon.png")
   },
   {
     id: uuid(),
@@ -39,7 +39,7 @@ const producers = [
     price: 3000,
     korogusSeconds: 250,
     purchased: 0,
-    image: "../assets/images/products/skull-kid.png"
+    image: require("@/assets/images/products/skull-kid.png")
   }
 ];
 

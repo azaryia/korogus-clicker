@@ -28,5 +28,6 @@ export default {
   .home {
     display: flex;
     overflow: hidden;
+    height: 100vh;
   }
 </style>
