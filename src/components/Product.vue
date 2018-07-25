@@ -1,53 +1,82 @@
 <template>
-  <div>
+  <div class="product">
     <h1>{{product.name}}</h1>
     <slot></slot>
     <p>{{Math.round(100 * product.price) /100}}</p>
     <p v-if="product && product.description">{{product.description}}</p>
-    <button type="submit" @click="buyProduct">Buy {{product.name}}</button>
-    <p ref="product" :class="{'show' : msg}">{{msg}}</p>
+    <button type="submit" v-bind:class="{'disable': product.price > $store.state.korogus}" @click="buyProduct">Buy {{product.name}}</button>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Product',
-    props: {
-      action: Object,
-      product: Object
-    },
-    data: function () {
-      return {
-        msg: null
-      }
-    },
-    methods: {
-      buyProduct: function () {
-        let vm = this;
-        this.msg = null;
-        if (this.product.price <= this.$store.state.korogus) {
-          this.$store.commit('BuyProduct', {productId: this.product.id});
-          this.msg = 'Yes, You can buy product' + this.product.name;
-          setTimeout(function () {
-            this.classList.remove('show');
-          }, 3000);
-
-        }
-        else {
-          this.msg = 'Sorry, You cant buy product' + this.product.name;
-          setTimeout(function () {
-            console.log(this);
-            console.log(vm);
-            vm.$refs.product.classList.remove('show');
-          }, 3000);
-        }
+export default {
+  name: "Product",
+  props: {
+    action: Object,
+    product: Object
+  },
+  data: function() {
+    return {
+      msg: null
+    };
+  },
+  methods: {
+    buyProduct: function() {
+      this.msg = null;
+      if (this.product.price <= this.$store.state.korogus) {
+        this.$store.commit("BuyProduct", {
+          'productId': this.product.id
+        });
+        this.msg = "Yes, You can buy product" + this.product.name;
       }
     }
-  };
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  .show {
-    display: block;
+.product {
+  color: #ffffff;
+  margin-left: 1rem;
+
+  button {
+    position: relative;
+    background-color: #57be32;
+    border: none;
+    padding: 1rem 0.5rem;
+    width: 10rem;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+
+    &:hover {
+      background: #fff;
+      box-shadow: 0px 2px 10px 5px #97b1bf;
+      color: #000;
+    }
+
+    &:after {
+      content: "";
+      background: #57be32;
+      display: block;
+      position: absolute;
+      padding: 1rem 0.5rem;
+      opacity: 0;
+      transition: all 0.8s;
+    }
+
+    &:active:after {
+      padding: 0;
+      margin: 0;
+      opacity: 1;
+      transition: 0s;
+    }
+    &.disable {
+      background: #be2d3a;
+      color: #ffffff;
+    }
   }
+}
 </style>

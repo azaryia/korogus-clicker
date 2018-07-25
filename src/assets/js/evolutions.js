@@ -3,43 +3,51 @@ import uuid from "uuid/v4";
 const evolutions = [
   {
     id: uuid(),
-    name: "Crotte Korogu",
+    name: "Arc",
     price: 30,
-    cookiesSeconds: 1,
+    korogusSeconds: 1,
     purchased: 0,
-    image: "../assets/images/products/zelda.png"
+    image: require("@/assets/images/products/arc.png")
   },
   {
     id: uuid(),
-    name: "Link",
+    name: "Epée",
     price: 100,
-    cookiesSeconds: 5,
+    korogusSeconds: 5,
     purchased: 0,
-    image: "../assets/images/products/link.png"
+    image: require("@/assets/images/products/epee.png")
   },
   {
     id: uuid(),
-    name: "ruto",
+    name: "Ocarina",
     price: 500,
-    cookiesSeconds: 20,
+    korogusSeconds: 20,
     purchased: 0,
-    image: "../assets/images/products/ruto.png"
+    image: require("@/assets/images/products/ocarina.png")
   },
   {
     id: uuid(),
-    name: "Machaon",
+    name: "Pot",
     price: 1500,
-    cookiesSeconds: 100,
+    korogusSeconds: 100,
     purchased: 0,
-    image: "../assets/images/products/machaon.png"
+    image: require("@/assets/images/products/pot.png")
   },
   {
     id: uuid(),
-    name: "Skull-Kid",
+    name: "Ruby",
     price: 3000,
-    cookiesSeconds: 250,
+    korogusSeconds: 250,
     purchased: 0,
-    image: "../assets/images/products/skull-kid.png"
+    image: require("@/assets/images/evolutions/ruby.png")
+  },
+  {
+    id: uuid(),
+    name: "Mask Majora",
+    price: 3000,
+    korogusSeconds: 250,
+    purchased: 0,
+    image: require("@/assets/images/evolutions/mask-majora.png")
   }
 ];
 
