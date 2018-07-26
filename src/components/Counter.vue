@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "counter",
+  name: "Counter",
   computed: {
     totalKorogus: function() {
       return Math.floor(parseFloat(this.$store.state.korogus));

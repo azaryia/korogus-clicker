@@ -7,27 +7,27 @@
 </template>
 
 <script>
-  export default {
-    name: "counter",
-    computed: {
-      totalKorogus: function () {
-        return Math.floor(1 * this.$store.state.korogus);
-      },
-      secondsKorogus: function () {
-        return Math.floor(1 * this.$store.state.korogusSeconds);
-      },
+export default {
+  name: "Korogus",
+  computed: {
+    totalKorogus: function () {
+      return Math.floor(1 * this.$store.state.korogus);
     },
-    mounted: function () {
-      setInterval(function () {
-        this.$store.commit('PopKorogu');
-      }.bind(this), 1000);
+    secondsKorogus: function () {
+      return Math.floor(1 * this.$store.state.korogusSeconds);
     },
-    methods: {
-      increment: function() {
-        this.$store.commit('CickKorogu');
-      }
+  },
+  mounted: function () {
+    setInterval(function () {
+      this.$store.commit('PopKorogu');
+    }.bind(this), 1000);
+  },
+  methods: {
+    increment: function() {
+      this.$store.commit('CickKorogu');
     }
-  };
+  }
+};
 </script>
 
 <style lang="scss">
