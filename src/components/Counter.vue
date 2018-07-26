@@ -1,7 +1,7 @@
 <template>
   <div class="counter">
     <p>{{ totalKorogus }} Korogus
-      <br>{{secondsKorogus}} Korgus for second</p>
+      <br>{{secondsKorogus}} Korogus for second</p>
     <img alt="tree-mojo" src="@/assets/images/tree-mojo.png" width="550" @click="increment">
   </div>
 </template>
