@@ -15,7 +15,7 @@ export default {
     this.koroguLucky();
   },
   beforeDestroy: function() {
-    clearInterval(this.interval);
+    clearInterval(10000);
     this.interval = Math.random() * 36000 - 3600 + 3600;
   },
   methods: {
@@ -28,6 +28,9 @@ export default {
           vm.$refs.noixKorogu.style.display = "inline-block";
           vm.$refs.noixKorogu.style.left = positionX + "px";
           vm.$refs.noixKorogu.style.top = positionY + "px";
+          setTimeout(function () {
+            vm.$refs.noixKorogu.style.display = "none";
+          }, 10000);
         }.bind(this),
         vm.interval
       );
