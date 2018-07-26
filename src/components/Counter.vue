@@ -1,7 +1,7 @@
 <template>
   <div class="counter">
-    <h1 class="bg-opacity">{{ totalKorogus }} Korogus</h1>
-    <h2 class="bg-opacity">{{secondsKorogus}} Korgus for second</h2>
+    <p>{{ totalKorogus }} Korogus
+      <br>{{secondsKorogus}} Korgus for second</p>
     <img alt="tree-mojo" src="@/assets/images/tree-mojo.png" width="550" @click="increment">
   </div>
 </template>
@@ -11,7 +11,6 @@ export default {
   name: "counter",
   computed: {
     totalKorogus: function() {
-      console.log(this.$store.state.korogus);
       return Math.floor(parseFloat(this.$store.state.korogus));
     },
     secondsKorogus: function() {
@@ -40,6 +39,7 @@ export default {
 .counter {
   color: #ffffff;
   width: 40%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,8 +50,19 @@ export default {
     repeat: no-repeat;
     size: cover;
   }
-  .bg-opacity {
-    background-color: black;
+  p {
+    font-size: 1.8rem;
+    background: {
+      image: url("../assets/images/ribbon.png");
+      position: center;
+      repeat: no-repeat;
+      size: cover;
+    }
+    display: block;
+    transform: translate(0, 80%);
+    padding: 0.7rem;
+    width: 100%;
+    height: auto;
   }
 }
 </style>

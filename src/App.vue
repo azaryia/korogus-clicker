@@ -7,6 +7,8 @@
 <style lang="scss">
 body {
   margin: 0;
+  height: 100vh;
+  overflow: hidden;
 
   #app {
     font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -16,7 +18,6 @@ body {
     color: #2c3e50;
     width: 100%;
     height: 100%;
-    margin: -8px;
     overflow: hidden;
   }
 }

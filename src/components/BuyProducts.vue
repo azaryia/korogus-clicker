@@ -1,7 +1,7 @@
 <template>
   <div class="buy-product">
     <Product :product="product" v-for="product in products" :key="product.id">
-      <img width="80" v-bind:src="product.image">
+      <img height="150" v-bind:src="product.image">
     </Product>
   </div>
 </template>
@@ -24,11 +24,9 @@ export default {
 <style lang="scss">
 .buy-product {
   overflow-y: auto;
-  width: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
   background: {
     image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)),
       url("../assets/images/bg-2.jpg");

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import products from "@/assets/js/products.js";
+import evolutions from "@/assets/js/evolutions.js";
 
 import _ from "lodash";
 
@@ -25,6 +26,21 @@ _.each(products, function(product) {
   product.price =
     window.localStorage.getItem("price" + product.name) ||
     window.localStorage.setItem("price" + product.name, product.price);
+  product.evolutions =
+    window.localStorage.getItem("evolutions_" + product.name) ||
+    window.localStorage.setItem(
+      "evolutions_" + product.name,
+      product.evolutions
+    );
+});
+// Init Local storage or get product: purchassed and price
+_.each(evolutions, function(evolution) {
+  evolution.purchased =
+    window.localStorage.getItem("purchased_" + evolution.name) ||
+    window.localStorage.setItem("purchased_" + evolution.name, evolution.purchased);
+  evolution.price =
+    window.localStorage.getItem("price" + evolution.name) ||
+    window.localStorage.setItem("price" + evolution.name, evolution.price);
 });
 
 // Init Korogu click
@@ -37,7 +53,8 @@ export default new Vuex.Store({
     korogus: korogusStorage,
     korogusSeconds: korogusSecondsStorage,
     korogusClick: korogusClickStorage,
-    products: products
+    products: products,
+    evolutions: evolutions
   },
   mutations: {
     CickKorogu: function(state) {
@@ -55,7 +72,8 @@ export default new Vuex.Store({
           state.korogusSeconds =
             parseFloat(state.korogusSeconds) +
             parseFloat(product.korogusSeconds);
-          state.korogusClick = 1.22 * parseFloat(state.korogusClick);
+          state.korogusClick =
+            product.cookieClick + parseFloat(state.korogusClick);
           window.localStorage.setItem("korogus", state.korogus);
           window.localStorage.setItem("price" + product.name, product.price);
           window.localStorage.setItem(
@@ -73,6 +91,26 @@ export default new Vuex.Store({
       state.korogus =
         parseFloat(state.korogus) + parseFloat(state.korogusSeconds);
       window.localStorage.setItem("korogus", state.korogus);
+    },
+    BuyEvolutions: function(state, { evolutionId }) {
+      state.evolutions = state.evolutions.map(evolution => {
+        if (evolution.id === evolutionId) {
+          state.products = state.products.map(product => {
+            if(evolution.product === product.name) {
+              evolution.purchased++;
+              evolution.price = 1.50 * parseFloat(evolution.price);
+              window.localStorage.setItem(
+                "purchased_" + evolution.name,
+                evolution.purchased
+              );
+              window.localStorage.setItem("evolution" + evolution.name, evolution.price);
+            }
+            return product;
+          });
+        }
+
+        return evolution;
+      });
     }
   },
   actions: {}

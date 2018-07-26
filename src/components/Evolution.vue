@@ -1,28 +1,28 @@
 <template>
-  <div class="product">
-    <h1>{{product.name}}</h1>
+  <div class="evolution">
+    <h1>{{evolution.name}}</h1>
     <slot></slot>
-    <p>{{Math.round(100 * product.price) /100}}</p>
-    <p v-if="product && product.description">{{product.description}}</p>
-    <button type="submit" v-bind:class="{'disable': product.price > $store.state.korogus}" @click="buyProduct">Buy {{product.name}}</button>
+    <p>{{Math.round(100 * evolution.price) /100}}</p>
+    <p v-if="evolution && evolution.description">{{evolution.description}}</p>
+    <button type="submit" v-bind:class="{'disable': evolution.price > $store.state.korogus}" @click="buyEvolution">Buy {{evolution.name}}</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Product",
+  name: "Evolution",
   props: {
     action: Object,
-    product: Object
+    evolution: Object
   },
   methods: {
-    buyProduct: function() {
+    buyEvolution: function() {
       this.msg = null;
-      if (this.product.price <= this.$store.state.korogus) {
-        this.$store.commit("BuyProduct", {
-          productId: this.product.id
+      if (this.evolution.price <= this.$store.state.korogus) {
+        this.$store.commit("BuyEvolution", {
+          evolutionId: this.evolution.id
         });
-        this.msg = "Yes, You can buy product" + this.product.name;
+        this.msg = "Yes, You can buy evolution" + this.evolution.name;
       }
     }
   }
@@ -30,17 +30,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.product {
+.evolution {
   color: #ffffff;
-  margin: 0.5rem;
-  min-width: 3.2rem;
+  margin-left: 1rem;
 
   button {
     position: relative;
-    background-color: #57be32;
+    background-color: #77b5cd;
     border: none;
-    padding: 1rem 0.5rem;
-    width: 10rem;
+    padding: 0.6em 0.3rem;
+    width: 8rem;
     text-align: center;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
@@ -55,7 +54,7 @@ export default {
 
     &:after {
       content: "";
-      background: #57be32;
+      background: #77b5cd;
       display: block;
       position: absolute;
       padding: 1rem 0.5rem;
