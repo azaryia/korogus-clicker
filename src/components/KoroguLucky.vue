@@ -1,0 +1,56 @@
+<template>
+  <div ref="noixKorogu" class="noix-korogu" @click="clickKoroguLucky"></div>
+</template>
+
+<script>
+export default {
+  name: "KoroguLucky",
+  data: function() {
+    return {
+      interval: Math.random() * 36000 - 3600 + 3600
+      // interval: Math.random() * 3600000 - 360000 + 360000
+    };
+  },
+  mounted: function() {
+    this.koroguLucky();
+  },
+  beforeDestroy: function() {
+    clearInterval(this.interval);
+  },
+  methods: {
+    koroguLucky: function() {
+      let vm = this;
+      this.interval = setInterval(
+        function() {
+          let positionX = (Math.random() * window.innerWidth).toFixed();
+          let positionY = (Math.random() * window.innerHeight).toFixed();
+          vm.$refs.noixKorogu.style.display = "inline-block";
+          vm.$refs.noixKorogu.style.left = positionX + "px";
+          vm.$refs.noixKorogu.style.top = positionY + "px";
+        }.bind(this),
+        this.interval
+      );
+    },
+    clickKoroguLucky: function() {
+      this.$store.commit("ClickKoroguLucky");
+      this.$refs.noixKorogu.style.display = "none";
+    }
+  }
+};
+</script>
+
+<style lang="scss">
+.noix-korogu {
+  z-index: 9;
+  position: absolute;
+  display: none;
+  height: 4rem;
+  width: 6rem;
+  background: {
+    image: url("../assets/images/noix-korogu.jpg");
+    position: center;
+    repeat: no-repeat;
+    size: cover;
+  }
+}
+</style>

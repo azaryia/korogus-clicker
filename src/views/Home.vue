@@ -6,6 +6,7 @@
       <BuyEvolutions></BuyEvolutions>
       <BuyProducts></BuyProducts>
     </div>
+    <KoroguLucky></KoroguLucky>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import Counter from "@/components/Counter.vue";
 import BuyProducts from "@/components/BuyProducts.vue";
 import BoxProduct from "@/components/BoxProducts.vue";
 import BuyEvolutions from "@/components/BuyEvolutions.vue";
+import KoroguLucky from "@/components/KoroguLucky.vue";
 
 export default {
   name: "home",
@@ -21,7 +23,8 @@ export default {
     Counter,
     BuyProducts,
     BoxProduct,
-    BuyEvolutions
+    BuyEvolutions,
+    KoroguLucky
   }
 };
 </script>
@@ -31,6 +34,7 @@ export default {
   display: flex;
   overflow: hidden;
   height: 100vh;
+  position: relative;
   .shop {
     display: flex;
     flex-direction: column;

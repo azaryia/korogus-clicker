@@ -132,6 +132,12 @@ export default new Vuex.Store({
 
         return evolution;
       });
+    },
+    ClickKoroguLucky: function(state) {
+      let max = parseFloat(state.korogus) / 2;
+      let min = parseFloat(state.korogus) / 4;
+      state.korogus += Math.random() * max - min + min;
+      window.localStorage.setItem("korogus", state.korogus);
     }
   },
   actions: {}
