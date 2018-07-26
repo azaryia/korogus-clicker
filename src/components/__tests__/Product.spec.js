@@ -1,17 +1,28 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
+import Vuex from "vuex";
 import Product from "@/components/Product.vue";
 
-describe("Product.vue", () => {
-  const wrapper = shallowMount(Product);
+const localVue = createLocalVue();
 
-  it("renders the correct markup", () => {
-    expect(wrapper.html()).toContain('<span class="product">0</span>');
+localVue.use(Vuex);
+
+describe("Product.vue", () => {
+  let actions;
+  let store;
+
+  beforeEach(() => {
+    actions = {
+      buyProduct: jest.fn()
+    };
+    store = new Vuex.Store({
+      state: {},
+      actions
+    });
   });
 
-  it("button click should buy product", () => {
-    expect(wrapper.vm.count).toBe(0);
-    const button = wrapper.find("button");
-    button.trigger("click");
-    expect(wrapper.vm.count).toBe(1);
+  it('calls store action "actionClick" when button is clicked', () => {
+    const wrapper = shallowMount(Product, { store, localVue });
+    wrapper.find("button").trigger("click");
+    expect(actions.buyProduct).toHaveBeenCalled();
   });
 });

@@ -1,8 +1,8 @@
 import { shallowMount } from "@vue/test-utils";
-import Counter from "@/components/Counter.vue";
+import BuyEvolutions from "@/components/BuyEvolutions.vue";
 
-describe("Counter.vue", () => {
-  const wrapper = shallowMount(Counter);
+describe("BuyEvolutions.vue", () => {
+  const wrapper = shallowMount(BuyEvolutions);
 
   it("renders the correct markup", () => {
     expect(wrapper.html()).toContain('<span class="count">0</span>');

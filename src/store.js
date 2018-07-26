@@ -89,7 +89,7 @@ export default new Vuex.Store({
         if (evolution.id === evolutionId) {
           state.korogus -= parseFloat(evolution.price);
           evolution.price = 5 * parseFloat(evolution.price);
-          evolution.disable = parseFloat(state.korogusClick) * 10;
+          evolution.disable = parseFloat(state.korogusSeconds) * 10;
           evolution.purchased++;
           window.localStorage.setItem(
             "evolutions",

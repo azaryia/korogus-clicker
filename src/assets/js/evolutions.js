@@ -81,7 +81,7 @@ const evolutions = [
     id: uuid(),
     name: "Mask Majora",
     price: 1500000,
-    product: "Skull-kid",
+    product: "Skull-Kid",
     korogusSecond: 2.4,
     disable: 100,
     description: "Evolution pour Skull-kid korogus par second * 2.4",

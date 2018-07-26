@@ -11,7 +11,11 @@ export default {
   name: "Counter",
   computed: {
     totalKorogus: function() {
-      return Math.floor(parseFloat(this.$store.state.korogus));
+      let korogus = new Intl.NumberFormat("de-DE").format(
+        Math.floor(parseFloat(this.$store.state.korogus))
+      );
+      document.title = korogus + " Korogus";
+      return korogus;
     },
     secondsKorogus: function() {
       return Math.floor(parseFloat(this.$store.state.korogusSeconds));

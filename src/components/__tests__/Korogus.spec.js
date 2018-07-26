@@ -1,8 +1,8 @@
 import { shallowMount } from "@vue/test-utils";
-import Counter from "@/components/Counter.vue";
+import Korogus from "@/components/Korogus.vue";
 
-describe("Counter.vue", () => {
-  const wrapper = shallowMount(Counter);
+describe("Korogus.vue", () => {
+  const wrapper = shallowMount(Korogus);
 
   it("renders the correct markup", () => {
     expect(wrapper.html()).toContain('<span class="count">0</span>');

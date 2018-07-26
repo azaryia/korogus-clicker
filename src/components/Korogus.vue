@@ -10,38 +10,41 @@
 export default {
   name: "Korogus",
   computed: {
-    totalKorogus: function () {
+    totalKorogus: function() {
       return Math.floor(1 * this.$store.state.korogus);
     },
-    secondsKorogus: function () {
+    secondsKorogus: function() {
       return Math.floor(1 * this.$store.state.korogusSeconds);
-    },
+    }
   },
-  mounted: function () {
-    setInterval(function () {
-      this.$store.commit('PopKorogu');
-    }.bind(this), 1000);
+  mounted: function() {
+    setInterval(
+      function() {
+        this.$store.commit("PopKorogu");
+      }.bind(this),
+      1000
+    );
   },
   methods: {
     increment: function() {
-      this.$store.commit('CickKorogu');
+      this.$store.commit("CickKorogu");
     }
   }
 };
 </script>
 
 <style lang="scss">
-  .counter {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: {
-      image: url('../assets/images/bg.jpg');
-      position: center;
-      repeat: no-repeat;
-      size: cover;
-    }
+.counter {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: {
+    image: url("../assets/images/bg.jpg");
+    position: center;
+    repeat: no-repeat;
+    size: cover;
   }
+}
 </style>
