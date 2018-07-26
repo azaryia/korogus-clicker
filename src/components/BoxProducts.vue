@@ -24,6 +24,7 @@ export default {
 
 <style lang="scss">
 .box-product {
+  z-index: 1;
   overflow-x: hidden;
   overflow-y: auto;
   width: 45%;

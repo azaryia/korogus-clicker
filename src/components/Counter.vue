@@ -41,6 +41,7 @@ export default {
 
 <style lang="scss">
 .counter {
+  z-index: 0;
   color: #ffffff;
   width: 40%;
   position: relative;

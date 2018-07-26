@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss">
 .buy-evolutions {
+  z-index: 2;
   font-size: 0.8rem;
   overflow-x: auto;
   display: flex;
