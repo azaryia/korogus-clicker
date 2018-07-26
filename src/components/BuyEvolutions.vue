@@ -1,6 +1,6 @@
 <template>
   <div class="buy-evolutions">
-    <Evolution v-if="!evolution.disable" :evolution="evolution" v-for="evolution in evolutionsObject" :key="evolution.id">
+    <Evolution v-if="evolution.disable <= korogusSeconds" :evolution="evolution" v-for="evolution in evolutions" :key="evolution.id">
       <img height="50" v-bind:src="evolution.image">
     </Evolution>
   </div>
@@ -10,15 +10,12 @@
 import Evolution from "@/components/Evolution.vue";
 export default {
   name: "BuyEvolutions",
-  data: function() {
-    return {
-      evolutions: {}
-    };
-  },
   computed: {
-    evolutionsObject: function() {
-      let vm = this;
-      return (vm.evolutions = this.$store.state.evolutions);
+    evolutions: function() {
+      return this.$store.state.evolutions;
+    },
+    korogusSeconds: function() {
+      return this.$store.state.korogusSeconds;
     }
   },
   components: {
