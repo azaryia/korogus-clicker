@@ -7,7 +7,7 @@ export default {
   name: "KoroguLucky",
   data: function() {
     return {
-      interval: Math.random() * 36000 - 3600 + 3600
+      interval: Math.random() * 360000 - 36000 + 36000
       // interval: Math.random() * 3600000 - 360000 + 360000
     };
   },
@@ -16,11 +16,12 @@ export default {
   },
   beforeDestroy: function() {
     clearInterval(this.interval);
+    this.interval = Math.random() * 36000 - 3600 + 3600;
   },
   methods: {
     koroguLucky: function() {
       let vm = this;
-      this.interval = setInterval(
+      vm.interval = setInterval(
         function() {
           let positionX = (Math.random() * window.innerWidth).toFixed();
           let positionY = (Math.random() * window.innerHeight).toFixed();
@@ -28,7 +29,7 @@ export default {
           vm.$refs.noixKorogu.style.left = positionX + "px";
           vm.$refs.noixKorogu.style.top = positionY + "px";
         }.bind(this),
-        this.interval
+        vm.interval
       );
     },
     clickKoroguLucky: function() {
