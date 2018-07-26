@@ -28,7 +28,7 @@ export default {
           vm.$refs.noixKorogu.style.display = "inline-block";
           vm.$refs.noixKorogu.style.left = positionX + "px";
           vm.$refs.noixKorogu.style.top = positionY + "px";
-          setTimeout(function () {
+          setTimeout(function() {
             vm.$refs.noixKorogu.style.display = "none";
           }, 10000);
         }.bind(this),
