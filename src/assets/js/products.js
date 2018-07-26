@@ -71,6 +71,46 @@ const producers = [
     purchased: 0,
     bgColor: "727172",
     image: require("@/assets/images/products/ganondorf.png")
+  },
+  {
+    id: uuid(),
+    name: "Impa",
+    price: 1000000,
+    korogusSeconds: 300,
+    cookieClick: 60,
+    purchased: 0,
+    bgColor: "5277e5",
+    image: require("@/assets/images/products/impa.png")
+  },
+  {
+    id: uuid(),
+    name: "Piaf",
+    price: 3000000,
+    korogusSeconds: 500,
+    cookieClick: 100,
+    purchased: 0,
+    bgColor: "dee1e2",
+    image: require("@/assets/images/products/piaf.png")
+  },
+  {
+    id: uuid(),
+    name: "Goron",
+    price: 7000000,
+    korogusSeconds: 600,
+    cookieClick: 110,
+    purchased: 0,
+    bgColor: "ffd530",
+    image: require("@/assets/images/products/goron.png")
+  },
+  {
+    id: uuid(),
+    name: "Sheik",
+    price: 10000000,
+    korogusSeconds: 1000,
+    cookieClick: 230,
+    purchased: 0,
+    bgColor: "463aa5",
+    image: require("@/assets/images/products/sheik.png")
   }
 ];
 

@@ -17,12 +17,10 @@ export default {
   },
   methods: {
     buyProduct: function() {
-      this.msg = null;
       if (this.product.price <= this.$store.state.korogus) {
         this.$store.commit("BuyProduct", {
           productId: this.product.id
         });
-        this.msg = "Yes, You can buy product" + this.product.name;
       }
     }
   }
