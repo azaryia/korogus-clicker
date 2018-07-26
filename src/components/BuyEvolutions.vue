@@ -1,6 +1,6 @@
 <template>
   <div class="buy-evolutions">
-    <Evolution :evolution="evolution" v-for="evolution in evolutionsObject" :key="evolution.id">
+    <Evolution v-if="!evolution.disable" :evolution="evolution" v-for="evolution in evolutionsObject" :key="evolution.id">
       <img height="50" v-bind:src="evolution.image">
     </Evolution>
   </div>

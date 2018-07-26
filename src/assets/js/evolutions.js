@@ -6,7 +6,9 @@ const evolutions = [
     name: "Pot",
     price: 1500,
     product: "Link",
-    description: "Evolution pour Link korogus par second * 2",
+    korogusSecond: 1.3,
+    disable: false,
+    description: "Evolution pour Link korogus par second * 1.3",
     purchased: 0,
     image: require("@/assets/images/evolutions/pot.png")
   },
@@ -15,7 +17,9 @@ const evolutions = [
     name: "Ruby",
     price: 3000,
     product: "Ruto",
-    description: "Evolution pour Ruto korogus par second * 2",
+    korogusSecond: 1.4,
+    disable: false,
+    description: "Evolution pour Ruto korogus par second * 1.4",
     purchased: 0,
     image: require("@/assets/images/evolutions/ruby.png")
   },
@@ -24,7 +28,9 @@ const evolutions = [
     name: "Fee",
     price: 6000,
     product: "Machaon",
-    description: "Evolution pour Machaon korogus par second * 2",
+    korogusSecond: 1.5,
+    disable: false,
+    description: "Evolution pour Machaon korogus par second * 1.5",
     purchased: 0,
     image: require("@/assets/images/evolutions/fee.png")
   },
@@ -33,7 +39,9 @@ const evolutions = [
     name: "Arc",
     price: 10000,
     product: "Zelda",
-    description: "Evolution pour Zelda korogus par second * 2",
+    korogusSecond: 1.5,
+    disable: false,
+    description: "Evolution pour Zelda korogus par second * 1.5",
     purchased: 0,
     image: require("@/assets/images/evolutions/arc.png")
   },
@@ -42,7 +50,9 @@ const evolutions = [
     name: "Epée",
     price: 30000,
     product: "Link",
-    description: "Evolution pour Link korogus par second * 2",
+    korogusSecond: 1.8,
+    disable: false,
+    description: "Evolution pour Link korogus par second * 1.8",
     purchased: 0,
     image: require("@/assets/images/evolutions/epee.png")
   },
@@ -51,6 +61,8 @@ const evolutions = [
     name: "Ocarina",
     price: 70000,
     product: "Ruto",
+    korogusSecond: 2,
+    disable: false,
     description: "Evolution pour Ruto korogus par second * 2",
     purchased: 0,
     image: require("@/assets/images/evolutions/ocarina.png")
@@ -60,7 +72,9 @@ const evolutions = [
     name: "Korogu",
     price: 1500000,
     product: "Click",
-    description: "Evolution pour Clickkorogus par second + 1",
+    korogusSecond: 2.1,
+    disable: false,
+    description: "Evolution pour Clickkorogus par second * 2.1",
     purchased: 0,
     image: require("@/assets/images/evolutions/korogu.png")
   },
@@ -69,7 +83,9 @@ const evolutions = [
     name: "Mask Majora",
     price: 1500000,
     product: "Skull-kid",
-    description: "Evolution pour Skull-kid korogus par second * 2",
+    korogusSecond: 2.4,
+    disable: false,
+    description: "Evolution pour Skull-kid korogus par second * 2.4",
     purchased: 0,
     image: require("@/assets/images/evolutions/mask-majora.png")
   },
@@ -78,7 +94,9 @@ const evolutions = [
     name: "Potion",
     price: 2000000,
     product: "KorogusForSecond",
-    description: "Evolution pour Korogus par second * 2",
+    korogusSecond: 2.4,
+    disable: false,
+    description: "Evolution pour Korogus par second * 2.4",
     purchased: 0,
     image: require("@/assets/images/evolutions/potion.png")
   },
@@ -87,7 +105,9 @@ const evolutions = [
     name: "Triforce",
     price: 3000000,
     product: "Zelda",
-    description: "Evolution pour Zelda korogus par second * 2",
+    korogusSecond: 3,
+    disable: false,
+    description: "Evolution pour Zelda korogus par second * 2.5",
     purchased: 0,
     image: require("@/assets/images/evolutions/triforce.png")
   }

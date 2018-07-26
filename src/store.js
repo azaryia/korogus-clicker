@@ -4,57 +4,50 @@ import Vuex from "vuex";
 import products from "@/assets/js/products.js";
 import evolutions from "@/assets/js/evolutions.js";
 
-import _ from "lodash";
-
 Vue.use(Vuex);
 
-// Init Local storage or get Korogus
-let korogusStorage =
-  window.localStorage.getItem("korogus") ||
+let korogusStorage = window.localStorage.getItem("korogus");
+
+let korogusSecondsStorage = window.localStorage.getItem("korogusSeconds");
+
+let productsStorage = window.localStorage.getItem("products");
+
+let evolutionsStorage = window.localStorage.getItem("evolutions");
+
+let korogusClickStorage = window.localStorage.getItem("korogusClick");
+
+if (!korogusStorage) {
   window.localStorage.setItem("korogus", 0);
+  korogusStorage = window.localStorage.getItem("korogus");
+}
 
-// Init Local storage or get Korogus
-let korogusSecondsStorage =
-  window.localStorage.getItem("korogusSeconds") ||
+if (!korogusSecondsStorage) {
   window.localStorage.setItem("korogusSeconds", 0);
+  korogusSecondsStorage = window.localStorage.getItem("korogusSeconds");
+}
 
-// Init Local storage or get product: purchassed and price
-_.each(products, function(product) {
-  product.purchased =
-    window.localStorage.getItem("purchased_" + product.name) ||
-    window.localStorage.setItem("purchased_" + product.name, product.purchased);
-  product.price =
-    window.localStorage.getItem("price" + product.name) ||
-    window.localStorage.setItem("price" + product.name, product.price);
-  product.evolutions =
-    window.localStorage.getItem("evolutions_" + product.name) ||
-    window.localStorage.setItem(
-      "evolutions_" + product.name,
-      product.evolutions
-    );
-});
-// Init Local storage or get product: purchassed and price
-_.each(evolutions, function(evolution) {
-  evolution.purchased =
-    window.localStorage.getItem("purchased_" + evolution.name) ||
-    window.localStorage.setItem("purchased_" + evolution.name, evolution.purchased);
-  evolution.price =
-    window.localStorage.getItem("price" + evolution.name) ||
-    window.localStorage.setItem("price" + evolution.name, evolution.price);
-});
+if (!productsStorage) {
+  window.localStorage.setItem("products", JSON.stringify(products));
+  productsStorage = window.localStorage.getItem("products");
+}
 
-// Init Korogu click
-let korogusClickStorage =
-  window.localStorage.getItem("korogusClick") ||
+if (!evolutionsStorage) {
+  window.localStorage.setItem("evolutions", JSON.stringify(evolutions));
+  evolutionsStorage = window.localStorage.getItem("evolutions");
+}
+
+if (!korogusClickStorage) {
   window.localStorage.setItem("korogusClick", 1);
+  korogusClickStorage = window.localStorage.getItem("korogusClick");
+}
 
 export default new Vuex.Store({
   state: {
     korogus: korogusStorage,
     korogusSeconds: korogusSecondsStorage,
     korogusClick: korogusClickStorage,
-    products: products,
-    evolutions: evolutions
+    products: JSON.parse(productsStorage),
+    evolutions: JSON.parse(evolutionsStorage)
   },
   mutations: {
     CickKorogu: function(state) {
@@ -66,7 +59,6 @@ export default new Vuex.Store({
     BuyProduct: function(state, { productId }) {
       state.products = state.products.map(product => {
         if (product.id === productId) {
-          product.purchased++;
           state.korogus -= parseFloat(product.price);
           product.price = 1.22 * parseFloat(product.price);
           state.korogusSeconds =
@@ -74,11 +66,11 @@ export default new Vuex.Store({
             parseFloat(product.korogusSeconds);
           state.korogusClick =
             product.cookieClick + parseFloat(state.korogusClick);
+          product.purchased++;
           window.localStorage.setItem("korogus", state.korogus);
-          window.localStorage.setItem("price" + product.name, product.price);
           window.localStorage.setItem(
-            "purchased_" + product.name,
-            product.purchased
+            "products",
+            JSON.stringify(state.products)
           );
           window.localStorage.setItem("korogusSeconds", state.korogusSeconds);
           window.localStorage.setItem("korogusClick", state.korogusClick);
@@ -92,18 +84,25 @@ export default new Vuex.Store({
         parseFloat(state.korogus) + parseFloat(state.korogusSeconds);
       window.localStorage.setItem("korogus", state.korogus);
     },
-    BuyEvolutions: function(state, { evolutionId }) {
+    BuyEvolution: function(state, { evolutionId }) {
       state.evolutions = state.evolutions.map(evolution => {
         if (evolution.id === evolutionId) {
+          state.korogus -= parseFloat(evolution.price);
+          evolution.price = 1.5 * parseFloat(evolution.price);
+          evolution.disable = true;
+          evolution.purchased++;
+          window.localStorage.setItem(
+            "evolutions",
+            JSON.stringify(state.evolutions)
+          );
+          window.localStorage.setItem("korogus", state.korogus);
           state.products = state.products.map(product => {
-            if(evolution.product === product.name) {
-              evolution.purchased++;
-              evolution.price = 1.50 * parseFloat(evolution.price);
+            if (evolution.product === product.name) {
+              product.korogusSeconds = product.korogusSeconds * 2;
               window.localStorage.setItem(
-                "purchased_" + evolution.name,
-                evolution.purchased
+                "products",
+                JSON.stringify(state.products)
               );
-              window.localStorage.setItem("evolution" + evolution.name, evolution.price);
             }
             return product;
           });

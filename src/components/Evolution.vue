@@ -17,12 +17,10 @@ export default {
   },
   methods: {
     buyEvolution: function() {
-      this.msg = null;
       if (this.evolution.price <= this.$store.state.korogus) {
         this.$store.commit("BuyEvolution", {
           evolutionId: this.evolution.id
         });
-        this.msg = "Yes, You can buy evolution" + this.evolution.name;
       }
     }
   }
