@@ -89,7 +89,7 @@ export default new Vuex.Store({
         if (evolution.id === evolutionId) {
           state.korogus -= parseFloat(evolution.price);
           evolution.price = 5 * parseFloat(evolution.price);
-          evolution.disable = state.korogusClick * 10;
+          evolution.disable = parseFloat(state.korogusClick) * 10;
           evolution.purchased++;
           window.localStorage.setItem(
             "evolutions",
@@ -99,21 +99,29 @@ export default new Vuex.Store({
           if (evolution.product) {
             state.products = state.products.map(product => {
               if (evolution.product === product.name) {
-                product.korogusSeconds = product.korogusSeconds * 2;
+                product.korogusSeconds = parseFloat(product.korogusSeconds) * 2;
+                state.korogusSeconds =
+                  parseFloat(product.purchased) * parseFloat(product.korogusSeconds) +
+                  parseFloat(state.korogusSeconds);
                 window.localStorage.setItem(
                   "products",
                   JSON.stringify(state.products)
+                );
+                window.localStorage.setItem(
+                  "korogusSeconds",
+                  state.korogusSeconds
                 );
               }
               return product;
             });
           }
           if (evolution.korogusClick) {
-            state.korogusClick = state.korogusClick + evolution.korogusClick;
+            state.korogusClick = parseFloat(state.korogusClick) + parseFloat(evolution.korogusClick);
             window.localStorage.setItem("korogusClick", state.korogusClick);
           }
           if (evolution.korogusSeconds) {
-            state.korogusSeconds = state.korogusSeconds + evolution.korogusSeconds;
+            state.korogusSeconds =
+              parseFloat(state.korogusSeconds) + parseFloat(evolution.korogusSeconds);
             window.localStorage.setItem("korogusSeconds", state.korogusSeconds);
           }
         }

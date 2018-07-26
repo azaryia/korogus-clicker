@@ -71,7 +71,6 @@ const evolutions = [
     id: uuid(),
     name: "Korogu",
     price: 1500000,
-    product: "Click",
     korogusSecond: 2.1,
     disable: 3000,
     description: "Evolution pour Clickkorogus par second * 2.1",
@@ -93,8 +92,8 @@ const evolutions = [
     id: uuid(),
     name: "Potion",
     price: 100,
-    korogusClick: 0,
-    disable: 650,
+    korogusClick: 20,
+    disable: 0,
     description: "Evolution click + 20",
     purchased: 0,
     image: require("@/assets/images/evolutions/potion.png")
