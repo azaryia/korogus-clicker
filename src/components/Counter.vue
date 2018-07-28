@@ -19,7 +19,9 @@ export default {
   },
   computed: {
     totalKorogus: function() {
-      document.title = this.$children[0] && this.$children[0].$refs.koroguTotal.outerText || '';
+      document.title =
+        (this.$children[0] && this.$children[0].$refs.koroguTotal.outerText) ||
+        "";
       return this.$store.state.korogus;
     },
     secondsKorogus: function() {

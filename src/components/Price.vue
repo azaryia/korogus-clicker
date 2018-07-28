@@ -15,11 +15,11 @@ export default {
   },
   computed: {
     formatPrice: function() {
-      let roundPrice = Math.round(100 * this.price) /100;
+      let roundPrice = Math.round(100 * this.price) / 100;
       let newPrice = new Intl.NumberFormat("de-DE").format(
         Math.floor(parseFloat(roundPrice))
       );
-      this.$emit('formatPrice');
+      this.$emit("formatPrice");
       return newPrice + " Korogus";
     }
   }
