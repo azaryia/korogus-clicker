@@ -1,24 +1,29 @@
 <template>
   <div class="counter">
-    <p>{{ totalKorogus }} Korogus
-      <br>{{secondsKorogus}} Korogus for second</p>
+    <div class="stat">
+      <Price :price="totalKorogus"></Price>
+      <Price class="font-small" :price="secondsKorogus">
+        <template>Korogus for second</template>
+      </Price>
+    </div>
     <img alt="tree-mojo" src="@/assets/images/tree-mojo.png" width="550" @click="increment">
   </div>
 </template>
 
 <script>
+import Price from "@/components/Price.vue";
 export default {
   name: "Counter",
+  components: {
+    Price
+  },
   computed: {
     totalKorogus: function() {
-      let korogus = new Intl.NumberFormat("de-DE").format(
-        Math.floor(parseFloat(this.$store.state.korogus))
-      );
-      document.title = korogus + " Korogus";
-      return korogus;
+      document.title = this.$children[0] && this.$children[0].$refs.koroguTotal.outerText || '';
+      return this.$store.state.korogus;
     },
     secondsKorogus: function() {
-      return Math.floor(parseFloat(this.$store.state.korogusSeconds));
+      return this.$store.state.korogusSeconds;
     }
   },
   mounted: function() {
@@ -55,8 +60,7 @@ export default {
     repeat: no-repeat;
     size: cover;
   }
-  p {
-    font-size: 1.8rem;
+  .stat {
     background: {
       image: url("../assets/images/ribbon.png");
       position: center;
@@ -68,6 +72,14 @@ export default {
     padding: 0.7rem;
     width: 100%;
     height: auto;
+  }
+  p {
+    font-size: 1.8rem;
+    margin: 0.5rem;
+
+    &.font-small {
+      font-size: 1.3rem;
+    }
   }
 }
 </style>
