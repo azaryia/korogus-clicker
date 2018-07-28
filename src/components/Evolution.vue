@@ -2,15 +2,19 @@
   <div class="evolution">
     <h1>{{evolution.name}}</h1>
     <slot></slot>
-    <p>{{Math.round(100 * evolution.price) /100}}</p>
+    <Price :price="evolution.price"></Price>
     <p v-if="evolution && evolution.description">{{evolution.description}}</p>
     <button type="submit" v-bind:class="{'disable': evolution.price > $store.state.korogus}" @click="buyEvolution">Buy {{evolution.name}}</button>
   </div>
 </template>
 
 <script>
+import Price from "@/components/Price.vue";
 export default {
   name: "Evolution",
+  components: {
+    Price
+  },
   props: {
     action: Object,
     evolution: Object
