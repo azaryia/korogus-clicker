@@ -89,13 +89,8 @@ export default new Vuex.Store({
         if (evolution.id === evolutionId) {
           state.korogus -= parseFloat(evolution.price);
           evolution.price = 5 * parseFloat(evolution.price);
-          evolution.disable = parseFloat(state.korogusSeconds) * 10;
+          evolution.disable = parseFloat(state.korogusSeconds) * 8;
           evolution.purchased++;
-          window.localStorage.setItem(
-            "evolutions",
-            JSON.stringify(state.evolutions)
-          );
-          window.localStorage.setItem("korogus", state.korogus);
           if (evolution.product) {
             state.products = state.products.map(product => {
               if (evolution.product === product.name) {
@@ -120,14 +115,28 @@ export default new Vuex.Store({
             state.korogusClick =
               parseFloat(state.korogusClick) +
               parseFloat(evolution.korogusClick);
+            evolution.korogusClick = parseFloat(evolution.korogusClick) * 1.23;
+            evolution.description =
+              "Evolution click +" +
+              Math.round(100 * evolution.korogusClick) / 100;
             window.localStorage.setItem("korogusClick", state.korogusClick);
           }
           if (evolution.korogusSeconds) {
             state.korogusSeconds =
               parseFloat(state.korogusSeconds) +
               parseFloat(evolution.korogusSeconds);
+            evolution.korogusSeconds =
+              parseFloat(evolution.korogusSeconds) * 1.33;
+            evolution.description =
+              "Evolution Korogu par seconde +" +
+              Math.round(100 * evolution.korogusSeconds) / 100;
             window.localStorage.setItem("korogusSeconds", state.korogusSeconds);
           }
+          window.localStorage.setItem(
+            "evolutions",
+            JSON.stringify(state.evolutions)
+          );
+          window.localStorage.setItem("korogus", state.korogus);
         }
 
         return evolution;
