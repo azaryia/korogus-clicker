@@ -1,5 +1,6 @@
 import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
+import { __createMocks as createStoreMocks } from "@/store";
 import Price from "@/components/Price.vue";
 
 const localVue = createLocalVue();

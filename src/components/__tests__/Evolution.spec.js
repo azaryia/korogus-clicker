@@ -1,4 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
+import store from "@/store";
 import Evolution from "@/components/Evolution.vue";
 
 describe("Evolution.vue", () => {

@@ -9,8 +9,8 @@ localVue.use(Vuex);
 
 describe("BoxProducts.vue", function() {
   const wrapper = shallowMount(BoxProducts, { store, localVue });
-  it("div class=\"box-products\" exist", function() {
-    expect(wrapper.find('.box-products').exists()).toBe(true);
+  it('div class="box-products" exist', function() {
+    expect(wrapper.find(".box-products").exists()).toBe(true);
   });
 
   it("Computed Products store", function() {

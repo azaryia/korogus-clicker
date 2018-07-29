@@ -18,12 +18,14 @@ describe("Counter.vue", function() {
 
   it('div class="stat" exist', () => {
     expect(wrapper.find(".stat").exists()).toBe(true);
-    expect(wrapper.find(".stat").html()).toContain("<div class=\"stat\"><price-stub></price-stub> <price-stub class=\"font-small\">Korogus for second</price-stub></div>"
+    expect(wrapper.find(".stat").html()).toContain(
+      '<div class="stat"><price-stub></price-stub> <price-stub class="font-small">Korogus for second</price-stub></div>'
     );
   });
 
   it("renders the correct counter", () => {
-    expect(wrapper.html()).toContain("<div class=\"counter\"><div class=\"stat\"><price-stub></price-stub> <price-stub class=\"font-small\">Korogus for second</price-stub></div> <img alt=\"tree-mojo\" src=\"@/assets/images/tree-mojo.png\" width=\"550\"></div>"
+    expect(wrapper.html()).toContain(
+      '<div class="counter"><div class="stat"><price-stub></price-stub> <price-stub class="font-small">Korogus for second</price-stub></div> <img alt="tree-mojo" src="@/assets/images/tree-mojo.png" width="550"></div>'
     );
   });
 
