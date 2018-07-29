@@ -16,7 +16,6 @@ export default {
     Price
   },
   props: {
-    action: Object,
     product: Object
   },
   methods: {
