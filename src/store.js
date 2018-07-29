@@ -6,36 +6,20 @@ import evolutions from "@/assets/js/evolutions.js";
 
 Vue.use(Vuex);
 
-let korogusStorage = localStorage.getItem("korogus");
-let korogusSecondsStorage = localStorage.getItem("korogusSeconds");
-let productsStorage = localStorage.getItem("products");
-let evolutionsStorage = localStorage.getItem("evolutions");
-let korogusClickStorage = localStorage.getItem("korogusClick");
+function getLocalStorage(value, key) {
+  let object = localStorage.getItem(key);
+  if (!object) {
+    localStorage.setItem(key, value);
+    object = localStorage.getItem(key);
+  }
+  return object;
+};
 
-if (!korogusStorage) {
-  localStorage.setItem("korogus", 0);
-  korogusStorage = localStorage.getItem("korogus");
-}
-
-if (!korogusSecondsStorage) {
-  localStorage.setItem("korogusSeconds", 0);
-  korogusSecondsStorage = localStorage.getItem("korogusSeconds");
-}
-
-if (!productsStorage) {
-  localStorage.setItem("products", JSON.stringify(products));
-  productsStorage = localStorage.getItem("products");
-}
-
-if (!evolutionsStorage) {
-  localStorage.setItem("evolutions", JSON.stringify(evolutions));
-  evolutionsStorage = localStorage.getItem("evolutions");
-}
-
-if (!korogusClickStorage) {
-  localStorage.setItem("korogusClick", 1);
-  korogusClickStorage = localStorage.getItem("korogusClick");
-}
+let korogusStorage = getLocalStorage(0, "korogus");
+let korogusSecondsStorage = getLocalStorage(0, "korogusSeconds");
+let productsStorage = getLocalStorage(JSON.stringify(products), "products");
+let evolutionsStorage = getLocalStorage(JSON.stringify(evolutions), "evolutions");
+let korogusClickStorage = getLocalStorage(1, "korogusClick");
 
 export default new Vuex.Store({
   state: {
