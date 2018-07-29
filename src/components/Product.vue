@@ -2,15 +2,19 @@
   <div class="product">
     <h1>{{product.name}}</h1>
     <slot></slot>
-    <p>{{Math.round(100 * product.price) /100}}</p>
-    <p v-if="product && product.description">{{product.description}}</p>
+    <Price :price="product.price"></Price>
+    <p v-if="product && product.description">{{product.description + " " + product.korogusSeconds}} Korogus par secondes.</p>
     <button type="submit" v-bind:class="{'disable': product.price > $store.state.korogus}" @click="buyProduct">Buy {{product.name}}</button>
   </div>
 </template>
 
 <script>
+import Price from "@/components/Price.vue";
 export default {
   name: "Product",
+  components: {
+    Price
+  },
   props: {
     action: Object,
     product: Object

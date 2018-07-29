@@ -8,6 +8,7 @@ const producers = [
     korogusSeconds: 1,
     cookieClick: 0.4,
     purchased: 0,
+    description: "Zelda ajoute ",
     bgColor: "ff9ee1",
     image: require("@/assets/images/products/zelda.png")
   },
@@ -18,6 +19,7 @@ const producers = [
     korogusSeconds: 5,
     cookieClick: 2,
     purchased: 0,
+    description: "Link ajoute ",
     bgColor: "6eb776",
     image: require("@/assets/images/products/link.png")
   },
@@ -28,6 +30,7 @@ const producers = [
     korogusSeconds: 20,
     cookieClick: 4,
     purchased: 0,
+    description: "Ruto ajoute ",
     bgColor: "33b2e0",
     image: require("@/assets/images/products/ruto.png")
   },
@@ -38,6 +41,7 @@ const producers = [
     korogusSeconds: 50,
     cookieClick: 7,
     purchased: 0,
+    description: "Machaon ajoute ",
     bgColor: "d6a4dd",
     image: require("@/assets/images/products/machaon.png")
   },
@@ -49,6 +53,7 @@ const producers = [
     evolutions: 0,
     cookieClick: 15,
     purchased: 0,
+    description: "Skull-Kid ajoute ",
     bgColor: "ff7a3d",
     image: require("@/assets/images/products/skull-kid.png")
   },
@@ -59,6 +64,7 @@ const producers = [
     korogusSeconds: 100,
     cookieClick: 20,
     purchased: 0,
+    description: "Fay ajoute ",
     bgColor: "a93fc1",
     image: require("@/assets/images/products/fay.png")
   },
@@ -69,6 +75,7 @@ const producers = [
     korogusSeconds: 150,
     cookieClick: 30,
     purchased: 0,
+    description: "Ganondorf ajoute ",
     bgColor: "727172",
     image: require("@/assets/images/products/ganondorf.png")
   },
@@ -79,6 +86,7 @@ const producers = [
     korogusSeconds: 300,
     cookieClick: 60,
     purchased: 0,
+    description: "Impa ajoute ",
     bgColor: "5277e5",
     image: require("@/assets/images/products/impa.png")
   },
@@ -89,6 +97,7 @@ const producers = [
     korogusSeconds: 500,
     cookieClick: 100,
     purchased: 0,
+    description: "Piaf ajoute ",
     bgColor: "dee1e2",
     image: require("@/assets/images/products/piaf.png")
   },
@@ -99,6 +108,7 @@ const producers = [
     korogusSeconds: 600,
     cookieClick: 110,
     purchased: 0,
+    description: "Goron ajoute ",
     bgColor: "ffd530",
     image: require("@/assets/images/products/goron.png")
   },
@@ -109,6 +119,7 @@ const producers = [
     korogusSeconds: 1000,
     cookieClick: 230,
     purchased: 0,
+    description: "Sheik ajoute ",
     bgColor: "463aa5",
     image: require("@/assets/images/products/sheik.png")
   }

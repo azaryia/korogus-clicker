@@ -7,13 +7,9 @@ import evolutions from "@/assets/js/evolutions.js";
 Vue.use(Vuex);
 
 let korogusStorage = window.localStorage.getItem("korogus");
-
 let korogusSecondsStorage = window.localStorage.getItem("korogusSeconds");
-
 let productsStorage = window.localStorage.getItem("products");
-
 let evolutionsStorage = window.localStorage.getItem("evolutions");
-
 let korogusClickStorage = window.localStorage.getItem("korogusClick");
 
 if (!korogusStorage) {
