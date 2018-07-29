@@ -1,17 +1,30 @@
-import { shallowMount } from "@vue/test-utils";
+import Vuex from "vuex";
 import BuyEvolutions from "@/components/BuyEvolutions.vue";
+import Evolution from "@/components/Evolution";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
+import store from "@/store";
 
-describe("BuyEvolutions.vue", () => {
-  const wrapper = shallowMount(BuyEvolutions);
+const localVue = createLocalVue();
 
-  it("renders the correct markup", () => {
-    expect(wrapper.html()).toContain('<span class="count">0</span>');
+localVue.use(Vuex);
+
+describe("BuyEvolutions.vue", function() {
+  const wrapper = shallowMount(BuyEvolutions, { store, localVue });
+  it("div class=\"buyEvolutions\" exist", function() {
+    expect(wrapper.find('.buy-evolutions').exists()).toBe(true);
   });
 
-  it("button click should increment the count", () => {
-    expect(wrapper.vm.count).toBe(0);
-    const button = wrapper.find("button");
-    button.trigger("click");
-    expect(wrapper.vm.count).toBe(1);
+  it("Computed Evolutions store", function() {
+    expect(store.state.evolutions.length).toEqual(10);
+  });
+
+  it("Component Children => Evolution exist", () => {
+    const barArray = wrapper.findAll(Evolution);
+    expect(barArray.isVueInstance()).toBe(true);
+  });
+
+  it("Computed Evolutions store", function() {
+    const korogusSeconds = parseFloat(store.state.korogusSeconds);
+    expect(parseFloat(store.state.korogusSeconds)).toBe(korogusSeconds);
   });
 });
