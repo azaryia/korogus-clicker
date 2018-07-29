@@ -9,11 +9,12 @@ localVue.use(Vuex);
 
 describe("BoxProducts.vue", function() {
   const wrapper = shallowMount(BoxProducts, { store, localVue });
-  it("div exist", function() {
+  it("div class=\"box-products\" exist", function() {
     expect(wrapper.find('.box-products').exists()).toBe(true);
   });
 
   it("Computed Products store", function() {
-    expect(store.state.products.length).toEqual(11);
+    const productsArray = parseFloat(store.state.products.length);
+    expect(parseFloat(store.state.products.length)).toEqual(productsArray);
   });
 });

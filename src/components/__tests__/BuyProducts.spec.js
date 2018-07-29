@@ -1,17 +1,26 @@
-import { shallowMount } from "@vue/test-utils";
+import Vuex from "vuex";
 import BuyProducts from "@/components/BuyProducts.vue";
+import Product from "@/components/Product";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
+import store from "@/store";
 
-describe("BuyProducts.vue", () => {
-  const wrapper = shallowMount(BuyProducts);
+const localVue = createLocalVue();
 
-  it("renders the correct markup", () => {
-    expect(wrapper.html()).toContain('<span class="count">0</span>');
+localVue.use(Vuex);
+
+describe("BuyProducts.vue", function() {
+  const wrapper = shallowMount(BuyProducts, { store, localVue });
+  it("div class=\"buyProducts\" exist", function() {
+    expect(wrapper.find('.buy-products').exists()).toBe(true);
   });
 
-  it("button click should increment the count", () => {
-    expect(wrapper.vm.count).toBe(0);
-    const button = wrapper.find("button");
-    button.trigger("click");
-    expect(wrapper.vm.count).toBe(1);
+  it("Computed Products store", function() {
+    const productsArray = parseFloat(store.state.products.length);
+    expect(parseFloat(store.state.products.length)).toEqual(productsArray);
+  });
+
+  it("Component Children => Product exist", () => {
+    const barArray = wrapper.findAll(Product);
+    expect(barArray.isVueInstance()).toBe(true);
   });
 });

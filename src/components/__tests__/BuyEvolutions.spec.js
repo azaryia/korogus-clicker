@@ -15,7 +15,8 @@ describe("BuyEvolutions.vue", function() {
   });
 
   it("Computed Evolutions store", function() {
-    expect(store.state.evolutions.length).toEqual(10);
+    const evolutionsArray = parseFloat(store.state.evolutions.length);
+    expect(parseFloat(store.state.evolutions.length)).toEqual(evolutionsArray);
   });
 
   it("Component Children => Evolution exist", () => {
