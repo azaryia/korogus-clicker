@@ -30,7 +30,6 @@ describe("Counter.vue", function() {
   });
 
   it("should render correct contents", () => {
-    console.log(wrapper.vm.count);
     expect(0).toBe(0);
     const button = wrapper.find("img");
     button.trigger("increment");

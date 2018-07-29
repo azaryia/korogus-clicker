@@ -1,29 +1,23 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import { __createMocks as createStoreMocks } from "@/store";
 import KoroguLucky from "@/components/KoroguLucky.vue";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
+import store from "@/store";
 
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
 describe("KoroguLucky.vue", () => {
-  let actions;
-  let store;
-
-  beforeEach(() => {
-    actions = {
-      buyKoroguLucky: jest.fn()
-    };
-    store = new Vuex.Store({
-      state: {},
-      actions
-    });
+  const wrapper = shallowMount(KoroguLucky, {
+    store,
+    localVue,
+    propsData: {
+      interval: 0
+    }
   });
 
-  it('calls store action "actionClick" when button is clicked', () => {
-    const wrapper = shallowMount(KoroguLucky, { store, localVue });
-    wrapper.find("button").trigger("click");
-    expect(actions.buyKoroguLucky).toHaveBeenCalled();
+  it("find ref KoroguLucky", () => {
+    const fooRef = wrapper.find({ ref: "noixKorogu" });
+    expect(fooRef.is(KoroguLucky)).toBe(true);
   });
 });
