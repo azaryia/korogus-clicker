@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     buyProduct: function() {
-      if (this.product.price <= this.$store.state.korogus) {
+      if (this.product.price <= this.korogus) {
         this.$store.commit("BuyProduct", {
           productId: this.product.id
         });

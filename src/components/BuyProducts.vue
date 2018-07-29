@@ -7,13 +7,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Product from "@/components/Product.vue";
 export default {
   name: "BuyProduct",
   computed: {
-    products: function() {
-      return this.$store.state.products;
-    }
+    ...mapGetters({
+      products: "products"
+    })
   },
   components: {
     Product
