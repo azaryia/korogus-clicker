@@ -4,11 +4,12 @@
     <slot></slot>
     <Price :price="product.price"></Price>
     <p v-if="product && product.description">{{product.description + " " + product.korogusSeconds}} Korogus par secondes.</p>
-    <button type="submit" v-bind:class="{'disable': product.price > $store.state.korogus}" @click="buyProduct">Buy {{product.name}}</button>
+    <button type="submit" v-bind:class="{'disable': product.price > korogus}" @click="buyProduct">Buy {{product.name}}</button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Price from "@/components/Price.vue";
 export default {
   name: "Product",
@@ -17,6 +18,11 @@ export default {
   },
   props: {
     product: Object
+  },
+  computed: {
+    ...mapGetters({
+      korogus: "korogus"
+    })
   },
   methods: {
     buyProduct: function() {

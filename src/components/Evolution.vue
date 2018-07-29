@@ -4,11 +4,12 @@
     <slot></slot>
     <Price :price="evolution.price"></Price>
     <p v-if="evolution && evolution.description">{{evolution.description}}</p>
-    <button type="submit" v-bind:class="{'disable': evolution.price > $store.state.korogus}" @click="buyEvolution">Buy {{evolution.name}}</button>
+    <button type="submit" v-bind:class="{'disable': evolution.price > korogus}" @click="buyEvolution">Buy {{evolution.name}}</button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Price from "@/components/Price.vue";
 export default {
   name: "Evolution",
@@ -18,9 +19,14 @@ export default {
   props: {
     evolution: Object
   },
+  computed: {
+    ...mapGetters({
+      korogus: "korogus"
+    })
+  },
   methods: {
     buyEvolution: function() {
-      if (this.evolution.price <= this.$store.state.korogus) {
+      if (this.evolution.price <= this.korogus) {
         this.$store.commit("BuyEvolution", {
           evolutionId: this.evolution.id
         });

@@ -125,7 +125,6 @@ export default new Vuex.Store({
   },
   actions: {},
   getters: {
-    getBuilding: state => buildingName => state.building[buildingName],
     products: state => state.products,
     evolutions: state => state.evolutions,
     korogus: state => state.korogus,

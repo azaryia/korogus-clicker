@@ -12,12 +12,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "BoxProducts",
   computed: {
-    products: function() {
-      return this.$store.getters.products;
-    }
+    ...mapGetters({
+      products: "products"
+    })
   }
 };
 </script>

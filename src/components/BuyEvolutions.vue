@@ -7,16 +7,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Evolution from "@/components/Evolution.vue";
 export default {
   name: "BuyEvolutions",
   computed: {
-    evolutions: function() {
-      return this.$store.state.evolutions;
-    },
-    korogusSeconds: function() {
-      return this.$store.state.korogusSeconds;
-    }
+    ...mapGetters({
+      evolutions: "evolutions",
+      korogusSeconds: "korogusSeconds"
+    })
   },
   components: {
     Evolution

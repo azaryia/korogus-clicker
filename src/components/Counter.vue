@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Price from "@/components/Price.vue";
 export default {
   name: "Counter",
@@ -18,20 +19,21 @@ export default {
     Price
   },
   computed: {
+    ...mapGetters({
+      korogus: "korogus",
+      secondsKorogus: "korogusSeconds"
+    }),
     totalKorogus: function() {
       document.title =
         (this.$children[0] && this.$children[0].$refs.koroguTotal.outerText) ||
         "";
-      return this.$store.state.korogus;
-    },
-    secondsKorogus: function() {
-      return this.$store.state.korogusSeconds;
+      return this.korogus;
     }
   },
   mounted: function() {
     setInterval(
       function() {
-        if (this.$store.state.korogus && this.$store.state.korogus > 0) {
+        if (this.korogus && this.korogus > 0) {
           this.$store.commit("PopKorogu");
         }
       }.bind(this),
