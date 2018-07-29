@@ -1,9 +1,5 @@
 <template>
-  <p ref="koroguTotal" >
-    {{formatPrice}}
-    <span>
-      <slot></slot>
-    </span>
+  <p class="price" ref="koroguTotal" >{{formatPrice}} <span><slot></slot></span>
   </p>
 </template>
 
