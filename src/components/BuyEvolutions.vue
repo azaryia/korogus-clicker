@@ -30,6 +30,7 @@ export default {
   font-size: 0.8rem;
   overflow-x: auto;
   display: flex;
+  flex: 1;
   background: {
     image: linear-gradient(rgba(226, 18, 98, 0.5), rgba(226, 18, 98, 1)),
       url("../assets/images/bg-3.jpg");
@@ -37,6 +38,5 @@ export default {
     repeat: no-repeat;
     size: cover;
   }
-  height: 70rem;
 }
 </style>

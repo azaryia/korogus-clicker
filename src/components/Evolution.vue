@@ -30,7 +30,11 @@ export default {
 <style scoped lang="scss">
 .evolution {
   color: #ffffff;
-  margin-left: 1rem;
+  margin: auto;
+  padding: {
+    left: 1rem;
+    right: 1rem;
+  }
 
   button {
     position: relative;

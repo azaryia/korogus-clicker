@@ -26,6 +26,7 @@ export default {
   z-index: 2;
   overflow-y: auto;
   display: flex;
+  flex: 2;
   flex-direction: column;
   align-items: center;
   background: {
