@@ -13,12 +13,15 @@ function getLocalStorage(value, key) {
     object = localStorage.getItem(key);
   }
   return object;
-};
+}
 
 let korogusStorage = getLocalStorage(0, "korogus");
 let korogusSecondsStorage = getLocalStorage(0, "korogusSeconds");
 let productsStorage = getLocalStorage(JSON.stringify(products), "products");
-let evolutionsStorage = getLocalStorage(JSON.stringify(evolutions), "evolutions");
+let evolutionsStorage = getLocalStorage(
+  JSON.stringify(evolutions),
+  "evolutions"
+);
 let korogusClickStorage = getLocalStorage(1, "korogusClick");
 
 export default new Vuex.Store({
