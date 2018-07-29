@@ -1,5 +1,5 @@
 <template>
-  <div class="buy-product">
+  <div class="buy-products">
     <Product :product="product" v-for="product in products" :key="product.id">
       <img height="150" v-bind:src="product.image">
     </Product>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
-.buy-product {
+.buy-products {
   z-index: 2;
   overflow-y: auto;
   display: flex;
