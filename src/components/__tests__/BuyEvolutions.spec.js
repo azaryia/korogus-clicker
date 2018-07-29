@@ -23,7 +23,7 @@ describe("BuyEvolutions.vue", function() {
     expect(barArray.isVueInstance()).toBe(true);
   });
 
-  it("Computed Evolutions store", function() {
+  it("Computed korogusSeconds store", function() {
     const korogusSeconds = parseFloat(store.state.korogusSeconds);
     expect(parseFloat(store.state.korogusSeconds)).toBe(korogusSeconds);
   });
