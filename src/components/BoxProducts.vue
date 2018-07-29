@@ -1,5 +1,5 @@
 <template>
-  <div class="box-product">
+  <div class="box-products">
     <div :class="'bg-' + product.bgColor" v-if="product && product.purchased && product.purchased > 0" class="row" v-for="product in products" :key="product.id">
       <p>{{product.name}} : {{product.purchased}} purchased</p>
       <div class="product-image">
@@ -13,17 +13,17 @@
 
 <script>
 export default {
-  name: "BoxProduct",
+  name: "BoxProducts",
   computed: {
     products: function() {
-      return this.$store.state.products;
+      return this.$store.getters.products;
     }
   }
 };
 </script>
 
 <style lang="scss">
-.box-product {
+.box-products {
   z-index: 1;
   overflow-x: hidden;
   overflow-y: auto;
